@@ -1,5 +1,9 @@
 package config
 
+import (
+	"sort"
+)
+
 // UserMgmt specifies users and groups that can be associated to a particular org or space.
 type UserMgmt struct {
 	LDAPUsers  []string `yaml:"ldap_users"`
@@ -41,6 +45,7 @@ func (u *UserMgmt) groups(groupName string) []string {
 	for k := range groupMap {
 		result = append(result, k)
 	}
+	sort.Strings(result)
 	return result
 }
 

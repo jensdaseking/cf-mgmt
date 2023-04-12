@@ -3,6 +3,7 @@ package configcommands
 import (
 	"errors"
 	"fmt"
+	"sort"
 
 	"github.com/vmwarepivotallabs/cf-mgmt/config"
 )
@@ -109,6 +110,8 @@ func (c *GlobalConfigurationCommand) updateSecGroups(current, additions, removal
 	for _, secGroup := range secGroupMap {
 		result = append(result, secGroup)
 	}
+
+	sort.Strings(result)
 
 	return result
 }
